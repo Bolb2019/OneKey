@@ -1,2 +1,7 @@
-Label
+ColorRect
+LineEdit
+TextEdit
 Camera2D
+Button
+HBoxContainer
+Label

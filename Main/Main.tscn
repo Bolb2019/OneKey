@@ -3,24 +3,45 @@
 [ext_resource type="PackedScene" uid="uid://bhfg834if323s" path="res://Player/Player.tscn" id="1_lxy7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxg2q"]
-size = Vector2(610, 233)
+size = Vector2(4454, 233)
 
 [node name="Node2D" type="Node2D" unique_id=1966251440]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1377056893]
+position = Vector2(5, 4)
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=49552153]
-offset_left = 290.0
-offset_top = 324.0
-offset_right = 898.0
-offset_bottom = 557.0
+offset_left = -2239.0
+offset_top = -117.0
+offset_right = 2222.0
+offset_bottom = 116.0
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1294998750]
-position = Vector2(594, 441)
+position = Vector2(-10, 0)
 shape = SubResource("RectangleShape2D_rxg2q")
 
-[node name="CharacterBody2D" parent="StaticBody2D/CollisionShape2D" unique_id=342607079 instance=ExtResource("1_lxy7q")]
-position = Vector2(-8, -197)
+[node name="ColorRect2" type="ColorRect" parent="StaticBody2D" unique_id=188453257]
+offset_left = -2573.0
+offset_top = -2251.0
+offset_right = -589.0
+offset_bottom = 78.0
+color = Color(0.5714965, 0.11769725, 0.093138106, 0.21568628)
+
+[node name="ColorRect3" type="ColorRect" parent="StaticBody2D" unique_id=721507646]
+offset_left = 604.0
+offset_top = -2250.0
+offset_right = 2588.0
+offset_bottom = 79.0
+color = Color(0.5714965, 0.11769725, 0.093138106, 0.21568628)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1984285792]
-position = Vector2(610, 142)
+position = Vector2(13, -330)
+
+[node name="Player_1" parent="." unique_id=342607079 instance=ExtResource("1_lxy7q")]
+modulate = Color(0.4, 0.41960785, 1, 1)
+position = Vector2(443, -228)
+
+[node name="Player_2" parent="." unique_id=959077909 instance=ExtResource("1_lxy7q")]
+modulate = Color(1, 0.41765028, 0.4195392, 1)
+position = Vector2(-418, -221)

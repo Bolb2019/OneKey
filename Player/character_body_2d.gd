@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var input = "OneKey_R"
+
 const MOVE_VELOCITY = 300.0
 const JUMP_VELOCITY = -400.0
 const FRICTION = 10
@@ -15,18 +17,22 @@ var time = 0
 var hold_buffer = 0
 var combo_buffer = 0
 
+func _ready() -> void:
+	if name == "Player_2":
+		input = "OneKey_L"
+
 func _physics_process(delta: float) -> void:
 	time += delta
 	#Start input
-	if Input.is_action_just_pressed("OneKey"):
+	if Input.is_action_just_pressed(input):
 		hold_buffer = time + 1
 	
-	if Input.is_action_pressed("OneKey"):
+	if Input.is_action_pressed(input):
 		$Combo/Charge.value = abs(hold_buffer - time - 1)
 		$Combo/Charge2.value = abs(hold_buffer - time - 1)
 	
 	#decide if it's a dot or dash
-	if Input.is_action_just_released("OneKey"):
+	if Input.is_action_just_released(input):
 		if time > hold_buffer:
 			Combo_used = Combo_used + str(" ")
 		elif time > hold_buffer - 0.5:
