@@ -1,7 +1,0 @@
-res://Main/Main.tscn
-res://Menu/Lobby/client_lobby.gd
-res://multiplayer/lobby.gd
-res://Menu/menu.gd
-res://Menu/menu.tscn
-res://Menu/Lobby/server_lobby.gd
-res://Menu/Lobby/server_lobby.tscn

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="OneKey"
-run/main_scene="uid://dayske6p1vnwn"
+run/main_scene="uid://b843qeof3a3fe"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
