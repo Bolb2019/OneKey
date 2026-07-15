@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://dayske6p1vnwn"]
+
+[ext_resource type="Script" uid="uid://cvejcxoalh1wa" path="res://Menu/menu.gd" id="1_ihied"]
+[ext_resource type="Texture2D" uid="uid://drrvrs5lcynlw" path="res://assets/play.png" id="3_ofseh"]
+[ext_resource type="Texture2D" uid="uid://c6p7062u6vgjf" path="res://assets/host.png" id="4_w6voe"]
+[ext_resource type="Texture2D" uid="uid://deppqeflxgyx" path="res://assets/exit.png" id="5_eafcm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofseh"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.19607843)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tf6kh"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.4509804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w6voe"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.5686275)
+
+[sub_resource type="Theme" id="Theme_mf1wf"]
+Button/styles/hover = SubResource("StyleBoxFlat_ofseh")
+Button/styles/normal = SubResource("StyleBoxFlat_tf6kh")
+Button/styles/pressed = SubResource("StyleBoxFlat_w6voe")
+
+[node name="Menu" type="Control" unique_id=230180289]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ihied")
+
+[node name="Control" type="Control" parent="." unique_id=938437402]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1248630742]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=80086912]
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -168.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_mf1wf")
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="HostButton" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=250543941]
+layout_mode = 2
+icon = ExtResource("4_w6voe")
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=705341106]
+layout_mode = 2
+icon = ExtResource("3_ofseh")
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/HBoxContainer" unique_id=1948331762]
+layout_mode = 2
+icon = ExtResource("5_eafcm")
+
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

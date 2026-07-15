@@ -21,3 +21,6 @@ shape = SubResource("RectangleShape2D_rxg2q")
 
 [node name="CharacterBody2D" parent="StaticBody2D/CollisionShape2D" unique_id=342607079 instance=ExtResource("1_lxy7q")]
 position = Vector2(-8, -197)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1984285792]
+position = Vector2(610, 142)
