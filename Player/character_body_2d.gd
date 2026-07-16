@@ -2,34 +2,34 @@ extends CharacterBody2D
 
 var input = "OneKey_L"
 
-const MOVE_VELOCITY = 350.0
+const MOVE_VELOCITY = 400.0
 const JUMP_VELOCITY = -450.0
 const FRICTION = 10
 const ATTACK_KNOCKBACK = {
-	"Attack_L": Vector2(-350.0, -120.0),
-	"Attack_R": Vector2(350.0, -120.0),
-	"Attack_down": Vector2(0.0, 350.0),
-	"Attack_up": Vector2(0.0, -350.0)
+	"Attack_L": Vector2(-400.0, -170.0),
+	"Attack_R": Vector2(400.0, -170.0),
+	"Attack_down": Vector2(0.0, 400.0),
+	"Attack_up": Vector2(0.0, -400.0)
 }
 
 const COMBOS = {
 	#MOVEMENT
 	#--basic--
-	"left": "10",
-	"right": "01",
-	"jump": "010",
+	"left": "-.",
+	"right": ".-",
+	"jump": ".-.",
 	#--expert--
-	"left_dash": "10110",
-	"right_dash": "01101",
-	"high_jump": "01110",
+	"left_dash": "-.--.",
+	"right_dash": ".--.-",
+	"high_jump": ".---.",
 	#--impossible--
 	
 	#ATTACKS
 	#--basic--
-	"left_attack": "1000",
-	"right_attack": "0001",
-	"down_attack": "0110",
-	"up_attack": "1001"
+	"left_attack": "-...",
+	"right_attack": "...-",
+	"down_attack": ".--.",
+	"up_attack": "-..-"
 	#--expert--
 	#--impossible--
 }
@@ -69,9 +69,9 @@ func _physics_process(delta: float) -> void:
 		if time > hold_buffer:
 			Combo_used = Combo_used + str(" ")
 		elif time > hold_buffer - 0.25:
-			Combo_used = Combo_used + str("1")
+			Combo_used = Combo_used + str("-")
 		else:
-			Combo_used = Combo_used + str("0")
+			Combo_used = Combo_used + str(".")
 		combo_buffer = time + 0.5
 		$Combo.text = Combo_used
 		$Use/Timer.start()
@@ -146,28 +146,28 @@ func use_combo(action):
 	if action == COMBOS["left_attack"]:
 		$Attack_L.visible = true
 		$Attack_L/CollisionShape2D.disabled = false
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(1).timeout
 		$Attack_L/CollisionShape2D.disabled = true
 		$Attack_L.visible = false
 		
 	if action == COMBOS["right_attack"]:
 		$Attack_R.visible = true
 		$Attack_R/CollisionShape2D.disabled = false
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(1).timeout
 		$Attack_R/CollisionShape2D.disabled = true
 		$Attack_R.visible = false
 		
 	if action == COMBOS["down_attack"]:
 		$Attack_down.visible = true
 		$Attack_down/CollisionShape2D.disabled = false
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(1).timeout
 		$Attack_down/CollisionShape2D.disabled = true
 		$Attack_down.visible = false
 		
 	if action == COMBOS["up_attack"]:
 		$Attack_up.visible = true
 		$Attack_up/CollisionShape2D.disabled = false
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(1).timeout
 		$Attack_up/CollisionShape2D.disabled = true
 		$Attack_up.visible = false
 		
@@ -186,19 +186,19 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 func _register_hit_damage(dmg) -> void:
 	if name == "Player_1":
-		GlobalStats.damage_p2 += dmg
-	elif name == "Player_2":
 		GlobalStats.damage_p1 += dmg
+	elif name == "Player_2":
+		GlobalStats.damage_p2 += dmg
 
 func _apply_knockback(area: Area2D) -> void:
 	var knockback = ATTACK_KNOCKBACK.get(area.name, Vector2.ZERO)
 	
 	if name == "Player_1":
-		velocity.x += knockback.x * (1.0 + (GlobalStats.damage_p2 / 100.0))
-		velocity.y += knockback.y * (1.0 + (GlobalStats.damage_p2 / 100.0))
-	elif name == "Player_2":
 		velocity.x += knockback.x * (1.0 + (GlobalStats.damage_p1 / 100.0))
 		velocity.y += knockback.y * (1.0 + (GlobalStats.damage_p1 / 100.0))
+	elif name == "Player_2":
+		velocity.x += knockback.x * (1.0 + (GlobalStats.damage_p2 / 100.0))
+		velocity.y += knockback.y * (1.0 + (GlobalStats.damage_p2 / 100.0))
 
 func _on_death_area_body_entered(body: Node2D) -> void:
 	if body != self:
@@ -206,6 +206,7 @@ func _on_death_area_body_entered(body: Node2D) -> void:
 
 	if name == "Player_1":
 		GlobalStats.stocks_p1 -= 1
+		GlobalStats.damage_p1 = 0
 		if GlobalStats.stocks_p1 <= 0:
 			GlobalStats.stocks_p1 = 3
 			GlobalStats.stocks_p2 = 3
@@ -217,6 +218,7 @@ func _on_death_area_body_entered(body: Node2D) -> void:
 			return
 	elif name == "Player_2":
 		GlobalStats.stocks_p2 -= 1
+		GlobalStats.damage_p2 = 0
 		if GlobalStats.stocks_p2 <= 0:
 			GlobalStats.stocks_p1 = 3
 			GlobalStats.stocks_p2 = 3
