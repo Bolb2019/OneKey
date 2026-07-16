@@ -1,6 +1,6 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1784215471
-export_presets.cfg::TextFile::-1::1784215471::0::1::::<><><>0<>0<><>::
+::res://::1784217617
+export_presets.cfg::TextFile::-1::1784215823::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::1496461294043934288::1784055230::1784135071::1::::<><><>0<>0<>b9eb6124fa6b19ef43b460753df802b7<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile::-1::1784176883::0::1::::<><><>0<>0<><>::
 ::res://addons/::1784135226
@@ -12,7 +12,7 @@ godot_super-wakatime.gd::GDScript::6277149880384411866::1784153214::0::1::::<>Ed
 plugin.cfg::TextFile::-1::1784153214::0::1::::<><><>0<>0<><>::
 README.md::TextFile::-1::1784153214::0::1::::<><><>0<>0<><>::
 utils.gd::GDScript::5251015809120159908::1784153214::0::1::::<>RefCounted<><>0<>0<><>::
-::res://Exports/::1784215483
+::res://Exports/::1784215822
 export_presets.cfg::TextFile::-1::1784153214::0::1::::<><><>0<>0<><>::
 index.apple-touch-icon.png::CompressedTexture2D::5774830369950306864::1784215470::1784215599::1::::<><><>0<>0<>59046f90c3d811eb084ae4bdd0ba97d3<>res://.godot/imported/index.apple-touch-icon.png-b75bd496fc4854b250deb61468b63048.ctex::
 index.icon.png::CompressedTexture2D::5322060764511475686::1784215470::1784215599::1::::<><><>0<>0<>7f5e081ee56637c610664e1681ccd31d<>res://.godot/imported/index.icon.png-0caff68861ee6ff2185c9032244ea593.ctex::
@@ -21,10 +21,10 @@ index.png::CompressedTexture2D::3766248462960416729::1784215470::1784215599::1::
 camera.gd::GDScript::8818519592093620055::1784174308::0::1::::<>Camera2D<><>0<>0<><>::
 Main.tscn::PackedScene::4764248359101132030::1784214633::0::1::::<><><>0<>0<><>::uid://dxv0y2bvbr11d::::res://Main/camera.gd<>uid://bhfg834if323s::::res://Player/Player.tscn<>uid://sifwf6ka1l81::::res://Main/win.gd
 win.gd::GDScript::1280257390907878776::1784175350::0::1::::<>Label<><>0<>0<><>::
-::res://Player/::1784212713
-character_body_2d.gd::GDScript::974817334009256186::1784212713::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://Player/::1784216707
+character_body_2d.gd::GDScript::974817334009256186::1784216707::0::1::::<>CharacterBody2D<><>0<>0<><>::
 GlobalStats.gd::GDScript::4951957005331541485::1784175365::0::1::::<>Node2D<><>0<>0<><>::
-Player.tscn::PackedScene::2888489226909516838::1784211971::0::1::::<><><>0<>0<><>::uid://n5hdmr14ajag::::res://Player/character_body_2d.gd
+Player.tscn::PackedScene::2888489226909516838::1784216413::0::1::::<><><>0<>0<><>::uid://n5hdmr14ajag::::res://Player/character_body_2d.gd
 ::res://UI/::1784211770
 menu.gd::GDScript::1428554343081158163::1784154300::0::1::::<>Control<><>0<>0<><>::
 menu.tscn::PackedScene::8406893833232805259::1784211770::0::1::::<><><>0<>0<><>::uid://umac1abxsa40::::res://UI/menu.gd
