@@ -1,15 +1,31 @@
 extends CharacterBody2D
 
-var input = "OneKey_R"
+var input = "OneKey_L"
 
-const MOVE_VELOCITY = 300.0
-const JUMP_VELOCITY = -400.0
+const MOVE_VELOCITY = 350.0
+const JUMP_VELOCITY = -450.0
 const FRICTION = 10
 
 const COMBOS = {
+	#MOVEMENT
+	#--basic--
 	"left": "10",
 	"right": "01",
-	"jump": "010"
+	"jump": "010",
+	#--expert--
+	"left_dash": "10110",
+	"right_dash": "01101",
+	"high_jump": "01110",
+	#--impossible--
+	
+	#ATTACKS
+	#--basic--
+	"left_attack": "1000",
+	"right_attack": "0001",
+	"down_attack": "0110",
+	"up_attack": "1001"
+	#--expert--
+	#--impossible--
 }
 
 var Combo_used = ""
@@ -19,9 +35,10 @@ var combo_buffer = 0
 
 func _ready() -> void:
 	if name == "Player_2":
-		input = "OneKey_L"
+		input = "OneKey_R"
 
 func _physics_process(delta: float) -> void:
+	
 	time += delta
 	#Start input
 	if Input.is_action_just_pressed(input):
@@ -84,9 +101,41 @@ func config_combo():
 		await get_tree().create_timer(0.1).timeout
 	
 func use_combo(action):
+	
+	#MOVEMENT
+	#--basic--
 	if action == COMBOS["left"]:
 		velocity.x = -MOVE_VELOCITY
 	if action == COMBOS["right"]:
 		velocity.x = MOVE_VELOCITY
 	if action == COMBOS["jump"]:
 		velocity.y = JUMP_VELOCITY
+	#--expert--
+	if action == COMBOS["left_dash"]:
+		velocity.x = -MOVE_VELOCITY * 2
+	if action == COMBOS["right_dash"]:
+		velocity.x = MOVE_VELOCITY * 1.5
+	if action == COMBOS["high_jump"]:
+		velocity.y = JUMP_VELOCITY * 1.5
+	#--impossible--
+	
+	#ATTACKS
+	#--basic--
+	if action == COMBOS["left_attack"]:
+		$Attack_L.visible = true
+		await get_tree().create_timer(0.5).timeout
+		$Attack_L.visible = false
+	if action == COMBOS["right_attack"]:
+		$Attack_R.visible = true
+		await get_tree().create_timer(0.5).timeout
+		$Attack_R.visible = false
+	if action == COMBOS["down_attack"]:
+		$Attack_down.visible = true
+		await get_tree().create_timer(0.5).timeout
+		$Attack_down.visible = false
+	if action == COMBOS["up_attack"]:
+		$Attack_up.visible = true
+		await get_tree().create_timer(0.5).timeout
+		$Attack_up.visible = false
+	#--expert--
+	#--impossible--

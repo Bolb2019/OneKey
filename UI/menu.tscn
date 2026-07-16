@@ -13,9 +13,9 @@ script = ExtResource("1_fytbl")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=519811619]
 layout_mode = 0
-offset_left = 534.0
+offset_left = 571.0
 offset_top = 302.0
-offset_right = 661.0
+offset_right = 698.0
 offset_bottom = 342.0
 
 [node name="Play" type="Button" parent="HBoxContainer" unique_id=597477533]

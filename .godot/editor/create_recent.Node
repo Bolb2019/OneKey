@@ -1,7 +1,11 @@
+CollisionShape2D
+Area2D
 ColorRect
+Label
+HSlider
+CanvasLayer
 LineEdit
 TextEdit
 Camera2D
 Button
 HBoxContainer
-Label

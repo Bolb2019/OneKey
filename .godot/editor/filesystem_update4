@@ -1,8 +1,5 @@
-res://Multiplayer/menu.tscn
-res://Multiplayer/menu.gd
-res://Multiplayer/Join_lobby.tscn
-res://Multiplayer/host_lobby.tscn
-res://UI/menu.gd
-res://UI/menu.tscn
-res://Main/Main.tscn
 res://Player/character_body_2d.gd
+res://Main/Main.tscn
+res://Player/Player.tscn
+res://UI/menu.tscn
+res://Main/camera.gd

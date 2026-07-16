@@ -1,47 +1,131 @@
 [gd_scene format=3 uid="uid://b843qeof3a3fe"]
 
+[ext_resource type="Script" uid="uid://dxv0y2bvbr11d" path="res://Main/camera.gd" id="1_83ytx"]
 [ext_resource type="PackedScene" uid="uid://bhfg834if323s" path="res://Player/Player.tscn" id="1_lxy7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxg2q"]
 size = Vector2(4454, 233)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83ytx"]
+size = Vector2(1541, 2315)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amygn"]
+size = Vector2(536.5, 2320)
+
+[sub_resource type="LabelSettings" id="LabelSettings_83ytx"]
+font_size = 33
+
 [node name="Node2D" type="Node2D" unique_id=1966251440]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1377056893]
-position = Vector2(5, 4)
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1377056893]
+position = Vector2(5, -228)
+scale = Vector2(0.7, 0.7)
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=49552153]
+[node name="ColorRect" type="ColorRect" parent="Floor" unique_id=49552153]
 offset_left = -2239.0
 offset_top = -117.0
 offset_right = 2222.0
 offset_bottom = 116.0
 metadata/_edit_use_anchors_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1294998750]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1294998750]
 position = Vector2(-10, 0)
 shape = SubResource("RectangleShape2D_rxg2q")
 
-[node name="ColorRect2" type="ColorRect" parent="StaticBody2D" unique_id=188453257]
-offset_left = -2573.0
-offset_top = -2251.0
-offset_right = -589.0
-offset_bottom = 78.0
+[node name="Danger" type="Area2D" parent="." unique_id=1230513254]
+position = Vector2(0, -232)
+scale = Vector2(0.7, 0.7)
+
+[node name="ColorRect2" type="ColorRect" parent="Danger" unique_id=188453257]
+offset_left = -2426.0
+offset_top = -2247.0
+offset_right = -876.0
+offset_bottom = 82.0
 color = Color(0.5714965, 0.11769725, 0.093138106, 0.21568628)
 
-[node name="ColorRect3" type="ColorRect" parent="StaticBody2D" unique_id=721507646]
-offset_left = 604.0
-offset_top = -2250.0
-offset_right = 2588.0
-offset_bottom = 79.0
+[node name="ColorRect3" type="ColorRect" parent="Danger" unique_id=721507646]
+offset_left = 938.0
+offset_top = -2246.0
+offset_right = 2593.0
+offset_bottom = 83.0
 color = Color(0.5714965, 0.11769725, 0.093138106, 0.21568628)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Danger" unique_id=1498050117]
+position = Vector2(-1649.5, -1086)
+shape = SubResource("RectangleShape2D_83ytx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Danger" unique_id=725987073]
+position = Vector2(1718, -1076)
+shape = SubResource("RectangleShape2D_83ytx")
+
+[node name="Death" type="Area2D" parent="." unique_id=1302523321]
+position = Vector2(0, -232)
+scale = Vector2(0.7, 0.7)
+
+[node name="ColorRect2" type="ColorRect" parent="Death" unique_id=521256749]
+offset_left = -2199.0
+offset_top = -2247.0
+offset_right = -1658.0
+offset_bottom = 82.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death" unique_id=710350326]
+position = Vector2(-1932.75, -1084)
+shape = SubResource("RectangleShape2D_amygn")
+
+[node name="ColorRect3" type="ColorRect" parent="Death" unique_id=16730007]
+offset_left = 1644.0
+offset_top = -2257.0
+offset_right = 2185.0
+offset_bottom = 72.0
+color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Death" unique_id=1186395030]
+position = Vector2(1910.25, -1094)
+shape = SubResource("RectangleShape2D_amygn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1984285792]
-position = Vector2(13, -330)
+position = Vector2(13, -562)
+script = ExtResource("1_83ytx")
 
-[node name="Player_1" parent="." unique_id=342607079 instance=ExtResource("1_lxy7q")]
+[node name="Player_2" parent="." unique_id=342607079 instance=ExtResource("1_lxy7q")]
 modulate = Color(0.4, 0.41960785, 1, 1)
-position = Vector2(443, -228)
+position = Vector2(447, -450)
 
-[node name="Player_2" parent="." unique_id=959077909 instance=ExtResource("1_lxy7q")]
+[node name="Player_1" parent="." unique_id=959077909 instance=ExtResource("1_lxy7q")]
 modulate = Color(1, 0.41765028, 0.4195392, 1)
-position = Vector2(-418, -221)
+position = Vector2(-418, -453)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1213274630]
+
+[node name="PLayer1" type="Label" parent="CanvasLayer" unique_id=1623527664]
+offset_left = 22.0
+offset_top = 20.0
+offset_right = 150.0
+offset_bottom = 43.0
+text = "Player 1 damage"
+
+[node name="dmg" type="Label" parent="CanvasLayer/PLayer1" unique_id=930222034]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 33.0
+offset_right = 129.0
+offset_bottom = 56.0
+text = "0%"
+label_settings = SubResource("LabelSettings_83ytx")
+
+[node name="PLayer2" type="Label" parent="CanvasLayer" unique_id=1746968936]
+offset_left = 994.0
+offset_top = 22.0
+offset_right = 1122.0
+offset_bottom = 45.0
+text = "Player 2 damage"
+
+[node name="dmg2" type="Label" parent="CanvasLayer/PLayer2" unique_id=20956554]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 33.0
+offset_right = 129.0
+offset_bottom = 56.0
+text = "0%"
+label_settings = SubResource("LabelSettings_83ytx")
