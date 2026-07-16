@@ -19,7 +19,7 @@ font_size = 33
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=1377056893]
 position = Vector2(5, -228)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.75, 0.75)
 
 [node name="ColorRect" type="ColorRect" parent="Floor" unique_id=49552153]
 offset_left = -2239.0
@@ -34,7 +34,7 @@ shape = SubResource("RectangleShape2D_rxg2q")
 
 [node name="Danger" type="Area2D" parent="." unique_id=1230513254]
 position = Vector2(0, -232)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.75, 0.75)
 
 [node name="ColorRect2" type="ColorRect" parent="Danger" unique_id=188453257]
 offset_left = -2426.0
@@ -46,7 +46,7 @@ color = Color(0.5714965, 0.11769725, 0.093138106, 0.21568628)
 [node name="ColorRect3" type="ColorRect" parent="Danger" unique_id=721507646]
 offset_left = 938.0
 offset_top = -2246.0
-offset_right = 2593.0
+offset_right = 2498.6667
 offset_bottom = 83.0
 color = Color(0.5714965, 0.11769725, 0.093138106, 0.21568628)
 
@@ -60,7 +60,7 @@ shape = SubResource("RectangleShape2D_83ytx")
 
 [node name="Death" type="Area2D" parent="." unique_id=1302523321]
 position = Vector2(0, -232)
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.75, 0.75)
 
 [node name="ColorRect2" type="ColorRect" parent="Death" unique_id=521256749]
 offset_left = -2199.0
@@ -69,19 +69,19 @@ offset_right = -1658.0
 offset_bottom = 82.0
 color = Color(0, 0, 0, 1)
 
+[node name="ColorRect3" type="ColorRect" parent="Death" unique_id=16730007]
+offset_left = 1644.0
+offset_top = -2241.0012
+offset_right = 2185.0
+offset_bottom = 87.99878
+color = Color(0, 0, 0, 1)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Death" unique_id=710350326]
 position = Vector2(-1932.75, -1084)
 shape = SubResource("RectangleShape2D_amygn")
 
-[node name="ColorRect3" type="ColorRect" parent="Death" unique_id=16730007]
-offset_left = 1644.0
-offset_top = -2257.0
-offset_right = 2185.0
-offset_bottom = 72.0
-color = Color(0, 0, 0, 1)
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Death" unique_id=1186395030]
-position = Vector2(1910.25, -1094)
+position = Vector2(1910.25, -1078.001)
 shape = SubResource("RectangleShape2D_amygn")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1984285792]
@@ -90,22 +90,22 @@ script = ExtResource("1_83ytx")
 
 [node name="Player_2" parent="." unique_id=342607079 instance=ExtResource("1_lxy7q")]
 modulate = Color(0.4, 0.41960785, 1, 1)
-position = Vector2(447, -450)
+position = Vector2(325, -412)
 
 [node name="Player_1" parent="." unique_id=959077909 instance=ExtResource("1_lxy7q")]
 modulate = Color(1, 0.41765028, 0.4195392, 1)
-position = Vector2(-418, -453)
+position = Vector2(-294, -420)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1213274630]
 
-[node name="PLayer1" type="Label" parent="CanvasLayer" unique_id=1623527664]
+[node name="Player1" type="Label" parent="CanvasLayer" unique_id=1623527664]
 offset_left = 22.0
 offset_top = 20.0
 offset_right = 150.0
 offset_bottom = 43.0
 text = "Player 1 damage"
 
-[node name="dmg" type="Label" parent="CanvasLayer/PLayer1" unique_id=930222034]
+[node name="dmg" type="Label" parent="CanvasLayer/Player1" unique_id=930222034]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 33.0
@@ -114,14 +114,14 @@ offset_bottom = 56.0
 text = "0%"
 label_settings = SubResource("LabelSettings_83ytx")
 
-[node name="PLayer2" type="Label" parent="CanvasLayer" unique_id=1746968936]
+[node name="Player2" type="Label" parent="CanvasLayer" unique_id=1746968936]
 offset_left = 994.0
 offset_top = 22.0
 offset_right = 1122.0
 offset_bottom = 45.0
 text = "Player 2 damage"
 
-[node name="dmg2" type="Label" parent="CanvasLayer/PLayer2" unique_id=20956554]
+[node name="dmg" type="Label" parent="CanvasLayer/Player2" unique_id=20956554]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 33.0

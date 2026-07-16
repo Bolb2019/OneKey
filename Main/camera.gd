@@ -10,6 +10,8 @@ extends Camera2D
 @onready var player2 = $"../Player_2"
 
 func _process(delta):
+	$"../CanvasLayer/Player1/dmg".text = str(GlobalStats.damage_p1) + "%"
+	$"../CanvasLayer/Player2/dmg".text = str(GlobalStats.damage_p2) + "%"
 
 	# Center camera between players
 	var center = (player1.global_position + player2.global_position) / 2.0

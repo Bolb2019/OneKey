@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://n5hdmr14ajag" path="res://Player/character_body_2d.gd" id="1_xhfnw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kpjcp"]
-radius = 15.0
-height = 74.0
+radius = 16.0
+height = 76.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qydi"]
-size = Vector2(18.000004, 38)
+size = Vector2(117, 38)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3lat"]
-size = Vector2(50, 16)
+size = Vector2(78, 45)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=342607079]
 script = ExtResource("1_xhfnw")
@@ -23,6 +23,11 @@ offset_bottom = 38.0
 color = Color(0.22670749, 0.22670749, 0.22670746, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=430590280]
+shape = SubResource("CapsuleShape2D_kpjcp")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1488591766]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1199554585]
 shape = SubResource("CapsuleShape2D_kpjcp")
 
 [node name="Combo" type="Label" parent="." unique_id=1166208616]
@@ -38,7 +43,7 @@ offset_left = 295.0
 offset_top = 18.0
 offset_right = 332.0
 offset_bottom = 34.0
-max_value = 0.5
+max_value = 0.25
 step = 0.01
 
 [node name="Charge2" type="HSlider" parent="Combo" unique_id=235623482]
@@ -47,10 +52,10 @@ offset_left = 333.0
 offset_top = 18.0
 offset_right = 373.0
 offset_bottom = 34.0
-min_value = 0.5
-max_value = 1.0
+min_value = 0.25
+max_value = 0.5
 step = 0.01
-value = 0.5
+value = 0.25
 
 [node name="Use" type="Label" parent="." unique_id=1547608873]
 offset_left = -30.0
@@ -61,7 +66,6 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Timer" type="Timer" parent="Use" unique_id=240615571]
-wait_time = 2.0
 one_shot = true
 
 [node name="Attack_L" type="Area2D" parent="." unique_id=337351970]
@@ -69,14 +73,15 @@ visible = false
 position = Vector2(-38, -1)
 
 [node name="ColorRect" type="ColorRect" parent="Attack_L" unique_id=1837930467]
-offset_left = -10.0
+offset_left = -109.0
 offset_top = -20.0
-offset_right = 9.9955635
+offset_right = 9.99556
 offset_bottom = 20.010605
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_L" unique_id=501942704]
-position = Vector2(3.8146973e-06, -0.050444126)
+position = Vector2(-49.5, -0.050444126)
 shape = SubResource("RectangleShape2D_3qydi")
+disabled = true
 
 [node name="Attack_R" type="Area2D" parent="." unique_id=1689185971]
 visible = false
@@ -84,35 +89,42 @@ position = Vector2(26, -10)
 
 [node name="ColorRect" type="ColorRect" parent="Attack_R" unique_id=409880044]
 offset_top = -10.0
-offset_right = 19.995564
+offset_right = 120.0
 offset_bottom = 30.010605
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_R" unique_id=1792572864]
-position = Vector2(10.000004, 9.949556)
+position = Vector2(60, 10)
 shape = SubResource("RectangleShape2D_3qydi")
+disabled = true
 
 [node name="Attack_down" type="Area2D" parent="." unique_id=1732967128]
 visible = false
 position = Vector2(0, 56)
 
 [node name="ColorRect" type="ColorRect" parent="Attack_down" unique_id=1781369945]
-offset_left = -26.0
+offset_left = -40.0
 offset_top = -9.0
-offset_right = 26.0
-offset_bottom = 9.0
+offset_right = 40.0
+offset_bottom = 38.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_down" unique_id=912500087]
+position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_q3lat")
+disabled = true
 
 [node name="Attack_up" type="Area2D" parent="." unique_id=1378525180]
 visible = false
 position = Vector2(0, -54)
 
 [node name="ColorRect" type="ColorRect" parent="Attack_up" unique_id=2095486452]
-offset_left = -26.0
-offset_top = -9.0
-offset_right = 26.0
-offset_bottom = 9.0
+offset_left = -40.0
+offset_top = -38.0
+offset_right = 40.0
+offset_bottom = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_up" unique_id=1502140560]
+position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_q3lat")
+disabled = true
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

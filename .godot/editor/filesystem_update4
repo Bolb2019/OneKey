@@ -3,3 +3,5 @@ res://Main/Main.tscn
 res://Player/Player.tscn
 res://UI/menu.tscn
 res://Main/camera.gd
+res://GlobalStats.gd
+res://Player/GlobalStats.gd
