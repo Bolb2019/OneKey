@@ -2,18 +2,19 @@
 
 [ext_resource type="Script" uid="uid://dxv0y2bvbr11d" path="res://Main/camera.gd" id="1_83ytx"]
 [ext_resource type="PackedScene" uid="uid://bhfg834if323s" path="res://Player/Player.tscn" id="1_lxy7q"]
+[ext_resource type="Script" uid="uid://sifwf6ka1l81" path="res://Main/win.gd" id="3_amygn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxg2q"]
 size = Vector2(4454, 233)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_83ytx"]
-size = Vector2(1541, 2315)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amygn"]
 size = Vector2(536.5, 2320)
 
 [sub_resource type="LabelSettings" id="LabelSettings_83ytx"]
 font_size = 33
+
+[sub_resource type="LabelSettings" id="LabelSettings_ps1la"]
+font_size = 146
 
 [node name="Node2D" type="Node2D" unique_id=1966251440]
 
@@ -32,35 +33,11 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(-10, 0)
 shape = SubResource("RectangleShape2D_rxg2q")
 
-[node name="Danger" type="Area2D" parent="." unique_id=1230513254]
-position = Vector2(0, -232)
-scale = Vector2(0.75, 0.75)
-
-[node name="ColorRect2" type="ColorRect" parent="Danger" unique_id=188453257]
-offset_left = -2426.0
-offset_top = -2247.0
-offset_right = -876.0
-offset_bottom = 82.0
-color = Color(0.5714965, 0.11769725, 0.093138106, 0.21568628)
-
-[node name="ColorRect3" type="ColorRect" parent="Danger" unique_id=721507646]
-offset_left = 938.0
-offset_top = -2246.0
-offset_right = 2498.6667
-offset_bottom = 83.0
-color = Color(0.5714965, 0.11769725, 0.093138106, 0.21568628)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Danger" unique_id=1498050117]
-position = Vector2(-1649.5, -1086)
-shape = SubResource("RectangleShape2D_83ytx")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Danger" unique_id=725987073]
-position = Vector2(1718, -1076)
-shape = SubResource("RectangleShape2D_83ytx")
-
 [node name="Death" type="Area2D" parent="." unique_id=1302523321]
 position = Vector2(0, -232)
 scale = Vector2(0.75, 0.75)
+collision_layer = 255
+collision_mask = 255
 
 [node name="ColorRect2" type="ColorRect" parent="Death" unique_id=521256749]
 offset_left = -2199.0
@@ -84,6 +61,20 @@ shape = SubResource("RectangleShape2D_amygn")
 position = Vector2(1910.25, -1078.001)
 shape = SubResource("RectangleShape2D_amygn")
 
+[node name="ColorRect4" type="ColorRect" parent="Death" unique_id=188453257]
+offset_left = -2426.0
+offset_top = -2247.0002
+offset_right = -876.0
+offset_bottom = 81.999756
+color = Color(0.5714965, 0.11769725, 0.093138106, 0.21568628)
+
+[node name="ColorRect5" type="ColorRect" parent="Death" unique_id=721507646]
+offset_left = 938.0
+offset_top = -2246.0002
+offset_right = 2498.6667
+offset_bottom = 82.999756
+color = Color(0.5714965, 0.11769725, 0.093138106, 0.21568628)
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1984285792]
 position = Vector2(13, -562)
 script = ExtResource("1_83ytx")
@@ -99,33 +90,59 @@ position = Vector2(-294, -420)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1213274630]
 
 [node name="Player1" type="Label" parent="CanvasLayer" unique_id=1623527664]
+modulate = Color(0.8649178, 0.21565875, 0.22833344, 1)
 offset_left = 22.0
 offset_top = 20.0
 offset_right = 150.0
 offset_bottom = 43.0
-text = "Player 1 damage"
+
+[node name="stocks" type="Label" parent="CanvasLayer/Player1" unique_id=1652440058]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -7.0
+offset_right = 128.0
+offset_bottom = 39.0
+text = "Stocks: 3"
+label_settings = SubResource("LabelSettings_83ytx")
 
 [node name="dmg" type="Label" parent="CanvasLayer/Player1" unique_id=930222034]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 33.0
-offset_right = 129.0
-offset_bottom = 56.0
+offset_left = -11.0
+offset_top = 38.0
+offset_right = 117.0
+offset_bottom = 84.0
 text = "0%"
 label_settings = SubResource("LabelSettings_83ytx")
 
 [node name="Player2" type="Label" parent="CanvasLayer" unique_id=1746968936]
+modulate = Color(0.17986274, 0.45619684, 0.7813943, 1)
 offset_left = 994.0
 offset_top = 22.0
 offset_right = 1122.0
 offset_bottom = 45.0
-text = "Player 2 damage"
+
+[node name="stocks" type="Label" parent="CanvasLayer/Player2" unique_id=149803960]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -11.0
+offset_right = 142.0
+offset_bottom = 35.0
+text = "Stocks: 3"
+label_settings = SubResource("LabelSettings_83ytx")
 
 [node name="dmg" type="Label" parent="CanvasLayer/Player2" unique_id=20956554]
 layout_mode = 0
-offset_left = 1.0
+offset_left = 7.0
 offset_top = 33.0
-offset_right = 129.0
-offset_bottom = 56.0
+offset_right = 135.0
+offset_bottom = 79.0
 text = "0%"
 label_settings = SubResource("LabelSettings_83ytx")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1773682487]
+offset_left = 194.0
+offset_top = 257.0
+offset_right = 1135.0
+offset_bottom = 457.0
+label_settings = SubResource("LabelSettings_ps1la")
+script = ExtResource("3_amygn")

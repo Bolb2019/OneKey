@@ -43,6 +43,17 @@ func _ready() -> void:
 	if name == "Player_2":
 		input = "OneKey_R"
 
+	if name == "Player_1":
+		collision_layer = 2
+		collision_mask = 3
+	elif name == "Player_2":
+		collision_layer = 4
+		collision_mask = 5
+
+	var death_zone = get_tree().current_scene.get_node_or_null("Death")
+	if death_zone != null:
+		death_zone.connect("body_entered", Callable(self, "_on_death_area_body_entered"))
+
 func _physics_process(delta: float) -> void:
 	time += delta
 	#Start input
@@ -175,16 +186,46 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 
 func _register_hit_damage(dmg) -> void:
 	if name == "Player_1":
-		GlobalStats.damage_p1 += dmg
-	elif name == "Player_2":
 		GlobalStats.damage_p2 += dmg
+	elif name == "Player_2":
+		GlobalStats.damage_p1 += dmg
 
 func _apply_knockback(area: Area2D) -> void:
 	var knockback = ATTACK_KNOCKBACK.get(area.name, Vector2.ZERO)
 	
 	if name == "Player_1":
-		velocity.x += knockback.x * (1.0 + (GlobalStats.damage_p1 / 100.0))
-		velocity.y += knockback.y * (1.0 + (GlobalStats.damage_p1 / 100.0))
-	elif name == "Player_2":
 		velocity.x += knockback.x * (1.0 + (GlobalStats.damage_p2 / 100.0))
 		velocity.y += knockback.y * (1.0 + (GlobalStats.damage_p2 / 100.0))
+	elif name == "Player_2":
+		velocity.x += knockback.x * (1.0 + (GlobalStats.damage_p1 / 100.0))
+		velocity.y += knockback.y * (1.0 + (GlobalStats.damage_p1 / 100.0))
+
+func _on_death_area_body_entered(body: Node2D) -> void:
+	if body != self:
+		return
+
+	if name == "Player_1":
+		GlobalStats.stocks_p1 -= 1
+		if GlobalStats.stocks_p1 <= 0:
+			GlobalStats.stocks_p1 = 3
+			GlobalStats.stocks_p2 = 3
+			GlobalStats.damage_p1 = 0
+			GlobalStats.damage_p2 = 0
+			GlobalStats.winner = "p2"
+			await get_tree().create_timer(2).timeout
+			get_tree().change_scene_to_file("res://UI/menu.tscn")
+			return
+	elif name == "Player_2":
+		GlobalStats.stocks_p2 -= 1
+		if GlobalStats.stocks_p2 <= 0:
+			GlobalStats.stocks_p1 = 3
+			GlobalStats.stocks_p2 = 3
+			GlobalStats.damage_p1 = 0
+			GlobalStats.damage_p2 = 0
+			GlobalStats.winner = "p1"
+			await get_tree().create_timer(2).timeout
+			get_tree().change_scene_to_file("res://UI/menu.tscn")
+			return
+
+	position = Vector2(0, -300)
+	velocity = Vector2.ZERO

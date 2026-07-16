@@ -1,7 +1,7 @@
+Label
+ColorRect
 CollisionShape2D
 Area2D
-ColorRect
-Label
 HSlider
 CanvasLayer
 LineEdit

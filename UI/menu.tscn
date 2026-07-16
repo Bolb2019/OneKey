@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://umac1abxsa40" path="res://UI/menu.gd" id="1_fytbl"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_0h2wq"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_wfiwe"]
+
 [node name="Menu" type="Control" unique_id=1218142233]
 layout_mode = 3
 anchors_preset = 15
@@ -13,10 +18,11 @@ script = ExtResource("1_fytbl")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=519811619]
 layout_mode = 0
-offset_left = 571.0
-offset_top = 302.0
-offset_right = 698.0
-offset_bottom = 342.0
+offset_left = 319.0
+offset_top = 338.99997
+offset_right = 446.0
+offset_bottom = 378.99997
+scale = Vector2(1.9383268, 1.9383268)
 
 [node name="Play" type="Button" parent="HBoxContainer" unique_id=597477533]
 layout_mode = 2
@@ -29,6 +35,76 @@ text = "Exit"
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1929184221]
 position = Vector2(603, 314)
 zoom = Vector2(1.42, 1.42)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=133744406]
+layout_mode = 0
+offset_left = 631.0
+offset_top = 115.0
+offset_right = 917.0
+offset_bottom = 518.0
+color = Color(0.23849377, 0.189372, 0.11637195, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect2" unique_id=266016370]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 281.0
+offset_bottom = 399.0
+color = Color(0.51005155, 0.41953874, 0.28731883, 1)
+
+[node name="Label" type="Label" parent="ColorRect2" unique_id=2011634844]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 70.0
+offset_top = 12.0
+offset_right = 216.0
+offset_bottom = 46.0
+text = "Cheat Sheet:"
+label_settings = SubResource("LabelSettings_0h2wq")
+
+[node name="Label2" type="Label" parent="ColorRect2" unique_id=188572677]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 42.0
+offset_right = 274.0
+offset_bottom = 351.0
+text = "MOVEMENT:
+    - walk left: \"10\"
+    - walk right: \"01\"
+    - jump: \"010\"
+    - dash left: \"10110\"
+    - dash right: \"01101\"
+    - high jump: \"01110\"
+ATTACKS:
+    - left attack: \"1000\"
+    - right attack: \"0001\"
+    - down attack: \"0110\"
+    - up attack: \"1001\""
+label_settings = SubResource("LabelSettings_wfiwe")
+
+[node name="Label3" type="Label" parent="ColorRect2" unique_id=970358854]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 38.0
+offset_top = 354.0
+offset_right = 241.0
+offset_bottom = 388.0
+text = "REMEMBER THIS!!"
+label_settings = SubResource("LabelSettings_0h2wq")
+
+[node name="Label2" type="Label" parent="." unique_id=1842347990]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 244.0
+offset_top = 121.0
+offset_right = 604.0
+offset_bottom = 295.0
+text = "   - A short tap is a \"0\", a short press is a \"1\" and a long press is a \" \"
+
+   - multiple actions can be done at once, for example \"010 0001\" would do a jump then a right attack"
+label_settings = SubResource("LabelSettings_wfiwe")
+autowrap_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="HBoxContainer/Exit" to="." method="_on_exit_pressed"]
